@@ -73,16 +73,16 @@ function Form({ items, setItems, addInHistory, setShowForm, history}) {
                   if (item.position === selectedSecond) {
                     return null;
                   }
-                  const boriliSe = history.filter(note => {
-                    const [prviBorac, drugiBorac] = note;
-                    if (item.position === prviBorac && selectedSecond === drugiBorac)
+                  const checkingItems = history.filter(note => {
+                    const [first, second] = note;
+                    if (item.position === first && selectedSecond === second)
                       return true;
-                    if (item.position === drugiBorac && selectedSecond === prviBorac)
+                    if (item.position === second && selectedSecond === first)
                       return true;
                     return false;
                   })
                  
-                   if(boriliSe.length !== 0)
+                   if(checkingItems.length !== 0)
 		                return null;
                   return (
                   <option key={`${item.name}_option1`} value={item.position} selected={item.position === selectedFirst}>{item.name}</option>)
@@ -97,15 +97,15 @@ function Form({ items, setItems, addInHistory, setShowForm, history}) {
                   if (item.position === selectedFirst) {
                     return null;
                   }
-                   const boriliSe = history.filter(note => {
-                    const [prviBorac, drugiBorac] = note;
-                    if (item.position === prviBorac && selectedFirst === drugiBorac)
+                   const checkingItems = history.filter(note => {
+                    const [first, second] = note;
+                    if (item.position === first && selectedFirst === second)
                       return true;
-                     if (item.position === drugiBorac && selectedFirst === prviBorac)
+                     if (item.position === second && selectedFirst === first)
                        return true;
                      return false;
                     })
-                   if(boriliSe.length !== 0)
+                   if(checkingItems.length !== 0)
 		                return null;
                   return (
                   <option key={`${item.name}_option2`} value={item.position} selected={item.position === selectedSecond}>{item.name}</option>)
